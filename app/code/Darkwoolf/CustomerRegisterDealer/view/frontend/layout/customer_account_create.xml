@@ -7,7 +7,7 @@
                    name="register.dealer.popup.button"
                    as="popup.button"
                    before="-"
-                   template="Darkwoolf_Customer::register_dealer.phtml"/>
+                   template="Darkwoolf_CustomerRegisterDealer::register_dealer.phtml"/>
         </referenceContainer>
     </body>
 </page>
