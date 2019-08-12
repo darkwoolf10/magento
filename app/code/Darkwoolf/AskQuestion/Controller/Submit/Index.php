@@ -6,6 +6,7 @@ namespace Darkwoolf\AskQuestion\Controller\Submit;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Exception\LocalizedException;
+use Zend_Validate;
 
 class Index extends \Magento\Framework\App\Action\Action
 {
@@ -31,7 +32,8 @@ class Index extends \Magento\Framework\App\Action\Action
     }
 
     /**
-     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Json|\Magento\Framework\Controller\ResultInterface
+     * @throws \Zend_Validate_Exception
      */
     public function execute()
     {
@@ -39,16 +41,18 @@ class Index extends \Magento\Framework\App\Action\Action
         $request = $this->getRequest();
 
         try {
-            if (!$this->formKeyValidator->validate($request) || $request->getParam('hideit')) {
+            if (!$this->formKeyValidator->validate($request) || $request->getParam('isHere')) {
                 throw new LocalizedException(__('Something went wrong.
                  Probably you were away for quite a long time already. Please, reload the page and try again.'));
             }
-            if (!$request->isAjax()) {
+            if (!$request->isXmlHttpRequest()) {
                 throw new LocalizedException(__('This request is not valid and can not be processed.'));
             }
-            // @TODO: #111 Backend form validation
-            // Here we must also process backend validation or all form fields.
-            // Otherwise attackers can just copy our page, remove fields validation and send anything they want
+
+            if (!Zend_Validate::is($request->getName(), 'NotEmpty')) {
+                throw new LocalizedException(__('Your name is empty.'));
+            }
+
             $data = [
                 'status' => self::STATUS_SUCCESS,
                 'message' => $request->getParams()

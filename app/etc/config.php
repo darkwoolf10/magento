@@ -226,7 +226,7 @@ return [
         'Amazon_Login' => 1,
         'Amazon_Payment' => 1,
         'Darkwoolf_AskQuestion' => 1,
-        'Darkwoolf_CatalogProductAdditionalTab' => 1,
+        'Darkwoolf_CatalogProductAdditionalTab' => 0,
         'Darkwoolf_Person' => 1,
         'Dotdigitalgroup_Email' => 1,
         'Klarna_Core' => 1,
