@@ -3,9 +3,9 @@
     <body>
         <referenceBlock name="product.info.details">
             <block class="Magento\Catalog\Block\Product\View"
-                   name="request.question.tab"
-                   as="request.question"
-                   template="Darkwoolf_AskQuestion::question.phtml"
+                   name="askquestion.sample.tab"
+                   as="askquestion.sample.tab"
+                   template="Darkwoolf_AskQuestion::product/view/question.phtml"
                    group="detailed_info">
                 <arguments>
                     <argument translate="true" name="title" xsi:type="string">Ask question</argument>
