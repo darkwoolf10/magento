@@ -1,6 +1,7 @@
 <?php
+
 \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::MODULE,
-    'Darkwoolf_Customer',
+    'Darkwoolf_CatalogProductAdditionalTab',
     __DIR__
 );
