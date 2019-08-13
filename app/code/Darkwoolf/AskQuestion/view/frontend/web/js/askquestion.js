@@ -38,7 +38,6 @@ define([
          * @returns {*|jQuery}
          */
         validateForm: function () {
-            console.log($(this.element).validation());
             return $(this.element).validation().valid();
         },
 
@@ -46,12 +45,9 @@ define([
          * Submit request via AJAX. Add form key to the post data.
          */
         ajaxSubmit: function () {
-            console.log(1);
             let formData = new FormData($(this.element).get(0));
 
-
             formData.append('form_key', $.mage.cookies.get('form_key'));
-            console.log(2);
 
             $.ajax({
                 url: $(this.element).attr('action'),
@@ -96,12 +92,10 @@ define([
                     $('body').trigger('processStop');
                     alert({
                         title: $.mage.__('Error'),
-                        /*eslint max-len: ["error", { "ignoreStrings": true }]*/
-                        content: $.mage.__('Your request can not be submitted right now. Please, contact us directly via email or phone to get your Sample.')
+                        content: $.mage.__('Your request can not be submitted right now.')
                     });
                 }
             });
-            console.log(3);
         },
 
         /**

@@ -41,17 +41,7 @@ class Index extends \Magento\Framework\App\Action\Action
         $request = $this->getRequest();
 
         try {
-            if (!$this->formKeyValidator->validate($request) || $request->getParam('isHere')) {
-                throw new LocalizedException(__('Something went wrong.
-                 Probably you were away for quite a long time already. Please, reload the page and try again.'));
-            }
-            if (!$request->isXmlHttpRequest()) {
-                throw new LocalizedException(__('This request is not valid and can not be processed.'));
-            }
-
-            if (!Zend_Validate::is($request->getName(), 'NotEmpty')) {
-                throw new LocalizedException(__('Your name is empty.'));
-            }
+            $this->validation($request);
 
             $data = [
                 'status' => self::STATUS_SUCCESS,
@@ -70,5 +60,30 @@ class Index extends \Magento\Framework\App\Action\Action
         $controllerResult = $this->resultFactory->create(ResultFactory::TYPE_JSON);
 
         return $controllerResult->setData($data);
+    }
+
+    /**
+     * @param $request
+     * @throws LocalizedException
+     * @throws \Zend_Validate_Exception
+     */
+    protected function validation($request)
+    {
+        if (!Zend_Validate::is($request->getParam('name'), 'NotEmpty')) {
+            throw new LocalizedException(__('Your name is empty.'));
+        } elseif (!Zend_Validate::is($request->getParam('email'), 'NotEmpty')) {
+            throw new LocalizedException(__('Your email is empty.'));
+        } elseif (!Zend_Validate::is($request->getParam('phone'), 'NotEmpty')) {
+            throw new LocalizedException(__('Your email is empty.'));
+        } elseif (!Zend_Validate::is($request->getParam('phone'), 'NotEmpty')) {
+            throw new LocalizedException(__('Your email is empty.'));
+        } elseif (!Zend_Validate::is($request->getParam('question'), 'NotEmpty')) {
+            throw new LocalizedException(__('Your question is empty.'));
+        } elseif (!$request->isXmlHttpRequest()) {
+            throw new LocalizedException(__('This request is not valid and can not be processed.'));
+        } elseif (!$this->formKeyValidator->validate($request) || $request->getParam('isHere')) {
+            throw new LocalizedException(__('Something went wrong.
+                 Probably you were away for quite a long time already. Please, reload the page and try again.'));
+        }
     }
 }

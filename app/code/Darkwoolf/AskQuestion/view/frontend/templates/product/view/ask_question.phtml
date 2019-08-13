@@ -1,7 +1,7 @@
 <div class="ask-question-tab">
     <h3><?= $block->escapeHtml(__('Ask Question')) ?></h3>
     <form
-        action="<? $block->escapeUrl($block->getUrl('/ask-question/submit')) ?>"
+        action="<?= $block->escapeUrl($block->getUrl('ask_question/submit')) ?>"
         method="POST"
         id="ask-form"
         onsubmit="return false;"
@@ -29,6 +29,7 @@
                class="mobileUKR"
                name="phone"
                placeholder="<?= $block->escapeHtmlAttr(__('+380...')) ?>"
+               data-validate="{'required':true}"
         />
 
         <label for="question"><?= $block->escapeHtml(__('Your question')) ?></label>
