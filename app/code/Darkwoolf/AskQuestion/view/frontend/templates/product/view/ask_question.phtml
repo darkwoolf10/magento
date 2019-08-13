@@ -5,7 +5,7 @@
         method="POST"
         id="ask-form"
         onsubmit="return false;"
-        data-mage-init='{"askquestion":{}, "phoneUKR":{}}'
+        data-mage-init='{"askquestion":{}}'
     >
         <label for="name"><?= $block->escapeHtml(__('Your name')) ?></label>
         <input type="text"
@@ -29,7 +29,6 @@
                class="mobileUKR"
                name="phone"
                placeholder="<?= $block->escapeHtmlAttr(__('+380...')) ?>"
-               data-validate="{'mobileUKR':true}"
         />
 
         <label for="question"><?= $block->escapeHtml(__('Your question')) ?></label>

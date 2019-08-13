@@ -29,15 +29,16 @@ define([
             if (!this.validateForm() || this.isFlood()) {
                 return;
             }
+            console.log('sdafadsf');
 
             this.ajaxSubmit();
         },
 
         /**
-         *
          * @returns {*|jQuery}
          */
         validateForm: function () {
+            console.log($(this.element).validation());
             return $(this.element).validation().valid();
         },
 
@@ -45,9 +46,12 @@ define([
          * Submit request via AJAX. Add form key to the post data.
          */
         ajaxSubmit: function () {
+            console.log(1);
             let formData = new FormData($(this.element).get(0));
 
+
             formData.append('form_key', $.mage.cookies.get('form_key'));
+            console.log(2);
 
             $.ajax({
                 url: $(this.element).attr('action'),
@@ -97,6 +101,7 @@ define([
                     });
                 }
             });
+            console.log(3);
         },
 
         /**

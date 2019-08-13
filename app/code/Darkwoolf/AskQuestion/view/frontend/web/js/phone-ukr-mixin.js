@@ -20,6 +20,7 @@ define([
              * @returns {*|bool}
              */
             function (value, element) {
+                console.log('MobileUkr');
                 return this.optional(element) || /^\+380\d{9}$/.test(value);
             },
             $.mage.__('Correct ukrainian mobile number without spaces please')
