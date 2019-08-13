@@ -1,7 +1,7 @@
 var config = {
     'config': {
         'mixins': {
-            'mega/validation': {
+            'mage/validation': {
                 'Darkwoolf_AskQuestion/js/phone-ukr-mixin': true
             },
             'Magento_Ui/js/lib/validation/rules': {
@@ -11,7 +11,8 @@ var config = {
     },
     map: {
         '*': {
-            askquestion: 'Darkwoolf_AskQuestion/js/askquestion'
+            askquestion: 'Darkwoolf_AskQuestion/js/askquestion',
+            mobileUKR: 'Darkwoolf_AskQuestion/js/phone-ukr-mixin.js'
         }
     }
 };

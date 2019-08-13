@@ -29,7 +29,7 @@
                class="mobileUKR"
                name="phone"
                placeholder="<?= $block->escapeHtmlAttr(__('+380...')) ?>"
-               data-validate="{'required':true}"
+               data-validate="{'required':true, 'mobileUKR': true}"
         />
 
         <label for="question"><?= $block->escapeHtml(__('Your question')) ?></label>
@@ -50,4 +50,3 @@
         </div>
     </form>
 </div>
-

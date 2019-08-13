@@ -6,15 +6,11 @@ define([
 ], function ($) {
     'use strict';
 
-    /**
-     *
-     */
     return function () {
         $.validator.addMethod(
             'mobileUKR',
 
             /**
-             *
              * @param {*|str} value
              * @param {*|obj} element
              * @returns {*|bool}
