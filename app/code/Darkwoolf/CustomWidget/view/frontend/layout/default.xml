@@ -1,0 +1,11 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="darkwoolf.banner-homepage" as="darkwoolf_banner_homepage"
+                   template="Darkwoolf_CustomWidget::widget/banner_home_page.phtml">
+            </block>
+        </referenceContainer>
+        <move element="product.info.social" destination="page.main.title" after="-" />
+    </body>
+</page>

@@ -1,5 +1,10 @@
 <?php /** @var \Darkwoolf\CustomWidget\Block\Widget\SpecialLink $block */ ?>
 <div class="geekhub-custom-widget">
+    <?php if ($block->getBannerContent()) : ?>
+        <p class='custom-widget-content'>
+            <?= $block->getBannerContent(); ?>
+        </p>
+    <?php endif; ?>
     <?php if ($block->outputBlock()) : ?>
         <div class="banner-box">
             <?= $block->outputBlock(); ?>
@@ -9,10 +14,5 @@
                 </a>
             <?php endif; ?>
         </div>
-    <?php endif; ?>
-    <?php if ($block->getBannerContent()) : ?>
-        <p class='custom-widget-content'>
-            <?= $block->getBannerContent(); ?>
-        </p>
     <?php endif; ?>
 </div>
