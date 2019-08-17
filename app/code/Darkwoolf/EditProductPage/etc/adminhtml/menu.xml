@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Darkwoolf_EditProductPage::greetings" title="Greetings" translate="title" module="Darkwoolf_EditProductPage" parent="Magento_Backend::content" sortOrder="50" dependsOnModule="Darkwoolf_EditProductPage" resource="Darkwoolf_EditProductPage::greetings"/>
+        <add id="Darkwoolf_EditProductPage::greetings_AskQuestion"
+             title="Ask Question"
+             translate="title"
+             module="Darkwoolf_EditProductPage"
+             parent="Darkwoolf_EditProductPage::greetings"
+             sortOrder="10"
+             dependsOnModule="Darkwoolf_EditProductPage"
+             action="askquestion/question/ask"
+             resource="Darkwoolf_EditProductPage::greetings"/>
+    </menu>
+</config>
