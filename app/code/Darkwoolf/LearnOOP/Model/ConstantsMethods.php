@@ -2,8 +2,6 @@
 
 namespace Darkwoolf\LearnOOP\Model;
 
-use ReflectionMethod;
-
 /**
  * Class ConstantsMethods
  * @package Darkwoolf\LearnOOP\Model
@@ -11,8 +9,17 @@ use ReflectionMethod;
 class ConstantsMethods
 {
     const NONE = 0;
+
     const REQUEST = 100;
+
     const AUTH = 101;
+
+    private $reflectionClass;
+
+    public function __construct()
+    {
+        $this->reflectionClass = new \ReflectionClass(__CLASS__);
+    }
 
     /**
      * @return int
@@ -40,23 +47,17 @@ class ConstantsMethods
 
     /**
      * @return array
-     * @throws \ReflectionException
      */
     public function getConstants(): array
     {
-        $oClass = new \ReflectionClass(__CLASS__);
-
-        return $oClass->getConstants();
+        return $this->reflectionClass->getConstants();
     }
 
     /**
      * @return \ReflectionMethod[]
-     * @throws \ReflectionException
      */
     public function getMethods()
     {
-        $class = new \ReflectionClass(__CLASS__);
-
-        return $class->getMethods();
+        return $this->reflectionClass->getMethods();
     }
 }
