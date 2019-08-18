@@ -16,8 +16,6 @@ class Parameters
 
     public $intParam;
 
-    public $globalInitParam;
-
     public $constantParam;
 
     public $optionalParam;
