@@ -18,29 +18,46 @@ class Index extends \Magento\Framework\App\Action\Action
     private $formKeyValidator;
 
     /**
+     * @var \Darkwoolf\AskQuestion\Model\QuestionFactory
+     */
+    private $questionFactory;
+
+    /**
      * Index constructor.
      * @param \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator
+     * @param \Darkwoolf\AskQuestion\Model\QuestionFactory $questionFactory
      * @param \Magento\Framework\App\Action\Context $context
      */
     public function __construct(
         \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator,
+        \Darkwoolf\AskQuestion\Model\QuestionFactory $questionFactory,
         \Magento\Framework\App\Action\Context $context
     ) {
         parent::__construct($context);
         $this->formKeyValidator = $formKeyValidator;
+        $this->questionFactory = $questionFactory;
     }
 
     /**
      * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Json|\Magento\Framework\Controller\ResultInterface
-     * @throws \Zend_Validate_Exception
+     * @throws \Exception
      */
     public function execute()
     {
         /** @var Http $request */
         $request = $this->getRequest();
+        /** @var $question */
+        $question = $this->questionFactory->create();
 
         try {
             $this->validation($request);
+
+            $question->setName($request->getParam('name'))
+                ->setEmail($request->getParam('email'))
+                ->setPhone($request->getParam('phone'))
+                ->setQuestion($request->getParam('question'))
+                ->setSku($request->getParam('sku'));
+            $question->save();
 
             $data = [
                 'status' => self::STATUS_SUCCESS,
@@ -67,7 +84,7 @@ class Index extends \Magento\Framework\App\Action\Action
      */
     protected function validation($request)
     {
-        if (count($request->getParams()) < 5) {
+        if (count($request->getParams()) < 6) {
             throw new LocalizedException(__('This request is not valid and can not be processed.'));
         } elseif (!$request->isXmlHttpRequest()) {
             throw new LocalizedException(__('This request is not xml http request.'));
