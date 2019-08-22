@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Darkwoolf_AskQuestion::content_question"
+             title="Questions"
+             translate="title"
+             module="Magento_Backend"
+             sortOrder="30"
+             parent="Magento_Backend::content"
+             resource="Darkwoolf_EditProductPage::greetings"/>
+        <add id="Darkwoolf_AskQuestion::ask_question_grid"
+             title="Ask Question Grid"
+             translate="title"
+             module="Darkwoolf_AskQuestion"
+             sortOrder="60"
+             parent="Darkwoolf_AskQuestion::content_question"
+             action="askquestion_grid/question/index"
+             resource="Darkwoolf_AskQuestion::ask_question_grid"/>
+    </menu>
+</config>

@@ -27,6 +27,7 @@ class Question extends \Magento\Framework\View\Element\Template
 
     /**
      * @return Collection
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function getQuestions(): Collection
     {
@@ -41,5 +42,13 @@ class Question extends \Magento\Framework\View\Element\Template
         }
 
         return $collection;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCurrentProduct()
+    {
+        return $this->_registry->registry('current_product');
     }
 }

@@ -27,9 +27,17 @@ use Darkwoolf\AskQuestion\Model\ResourceModel\Question as QuestionResource;
  */
 class Question extends \Magento\Framework\Model\AbstractModel
 {
+    /** @var string  */
     const STATUS_PENDING = 'Pending';
 
+    /** @var string  */
     const STATUS_ANSWERED = 'Answered';
+
+    /** @var string  */
+    const STATUS_ERROR = 'Error';
+
+    /** @var string  */
+    const STATUS_SUCCESS = 'Success';
 
     /**
      * @var \Magento\Store\Model\StoreManagerInterface

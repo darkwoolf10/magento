@@ -1,3 +1,9 @@
+.question-list {
+    margin-top: 10px;
+    list-style-type: none;
+    padding-inline-start: 0px;
+}
+
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
     .ask-question-btn {
         display: flex;
@@ -6,21 +12,29 @@
     }
 }
 
-.question-list {
-    margin-top: 10px;
-    list-style-type: none;
-    padding-inline-start: 0px;
-}
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+    .question-item {
+        border: 1px solid slateblue;
+        padding: 5px;
+        margin-bottom: 5px;
+        -webkit-box-shadow: 6px 4px 5px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 6px 4px 5px 0px rgba(0,0,0,0.75);
+        box-shadow: 6px 4px 5px 0px rgba(0,0,0,0.75);
 
-.question-item {
-    border: 1px solid slateblue;
-    padding: 5px;
-    margin-bottom: 5px;
-    -webkit-box-shadow: 6px 4px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 6px 4px 5px 0px rgba(0,0,0,0.75);
-    box-shadow: 6px 4px 5px 0px rgba(0,0,0,0.75);
+        &:hover {
+            background-color: #9ba8b5;
+        }
+    }
 
-    &:hover {
-        background-color: #9ba8b5;
+    .question-status {
+        float:right;
+    }
+
+    .font-red {
+        color: darkred;
+    }
+
+    .font-green {
+        color: darkgreen;
     }
 }

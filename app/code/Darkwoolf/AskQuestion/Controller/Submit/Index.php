@@ -3,14 +3,14 @@
 
 namespace Darkwoolf\AskQuestion\Controller\Submit;
 
+use Darkwoolf\AskQuestion\Model\Question;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Exception\LocalizedException;
 
 class Index extends \Magento\Framework\App\Action\Action
 {
-    const STATUS_ERROR = 'Error';
-    const STATUS_SUCCESS = 'Success';
+
 
     /**
      * @var \Magento\Framework\Data\Form\FormKey\Validator
@@ -60,12 +60,12 @@ class Index extends \Magento\Framework\App\Action\Action
             $question->save();
 
             $data = [
-                'status' => self::STATUS_SUCCESS,
+                'status' => Question::STATUS_SUCCESS,
                 'message' => $request->getParams()
             ];
         } catch (LocalizedException $e) {
             $data = [
-                    'status'  => self::STATUS_ERROR,
+                    'status'  => Question::STATUS_ERROR,
                 'message' => $e->getMessage()
             ];
         }
