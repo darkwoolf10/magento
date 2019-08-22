@@ -5,7 +5,7 @@
             <block class="Magento\Catalog\Block\Product\View"
                    name="request.sample.tab"
                    as="request.sample"
-                   template="Darkwoolf_Catalog::product/request_sample.phtml"
+                   template="Darkwoolf_CatalogProductAdditionalTab::product/request_sample.phtml"
                    group="detailed_info">
                 <arguments>
                     <argument translate="true" name="title" xsi:type="string">Make your style</argument>
