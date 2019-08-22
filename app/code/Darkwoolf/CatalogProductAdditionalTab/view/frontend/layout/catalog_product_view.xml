@@ -8,7 +8,7 @@
                    template="Darkwoolf_CatalogProductAdditionalTab::product/request_sample.phtml"
                    group="detailed_info">
                 <arguments>
-                    <argument translate="true" name="title" xsi:type="string">Make your style</argument>
+                    <argument translate="true" name="title" xsi:type="string">Make your style.</argument>
                 </arguments>
             </block>
         </referenceBlock>
