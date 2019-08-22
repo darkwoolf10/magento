@@ -1,5 +1,7 @@
 <div class="register-button-box">
-    <button class="primary action dealer-registration-button" id="dealer-registration-button">For Dealers</button>
+    <button class="primary action dealer-registration-button"
+            id="dealer-registration-button"
+            data-mage-init='{"dealerModal":{}}'>For Dealers</button>
 </div>
 
 <div class="dealer-registration-form-box" style="display: none;">
@@ -8,16 +10,28 @@
     // @codingStandardsIgnoreFile
     /* Extensions placeholder */ ?>
     <?= $block->getChildHtml('customer.form.register.extra') ?>
-    <form class="form create account form-create-account" action="<?= $block->escapeUrl($block->getPostActionUrl()) ?>" method="post" id="custom-form-validate" enctype="multipart/form-data" autocomplete="off">
+    <form class="form create account form-create-account"
+          action="<?= $block->escapeUrl($block->getPostActionUrl()) ?>"
+          method="post" id="custom-form-validate"
+          enctype="multipart/form-data"
+          autocomplete="off"
+    >
         <?= /* @noEscape */ $block->getBlockHtml('formkey'); ?>
         <fieldset class="fieldset create info">
             <legend class="legend"><span><?= $block->escapeHtml(__('Personal Information')) ?></span></legend><br>
             <input type="hidden" name="success_url" value="<?= $block->escapeUrl($block->getSuccessUrl()) ?>">
             <input type="hidden" name="error_url" value="<?= $block->escapeUrl($block->getErrorUrl()) ?>">
-            <?= $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Name')->setObject($block->getFormData())->setForceUseCustomerAttributes(true)->toHtml() ?>
+            <?=
+                $block->getLayout()
+                    ->createBlock('Magento\Customer\Block\Widget\Name')
+                    ->setObject($block->getFormData())
+                    ->setForceUseCustomerAttributes(true)
+                    ->toHtml()
+            ?>
             <?php if ($block->isNewsletterEnabled()): ?>
                 <div class="field choice newsletter">
-                    <input type="checkbox" name="is_subscribed" title="<?= $block->escapeHtmlAttr(__('Sign Up for Newsletter')) ?>" value="1" id="custom_is_subscribed"<?php if ($block->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox">
+                    <input type="checkbox"
+                           name="is_subscribed" title="<?= $block->escapeHtmlAttr(__('Sign Up for Newsletter')) ?>" value="1" id="custom_is_subscribed"<?php if ($block->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox">
                     <label for="custom_is_subscribed" class="label"><span><?= $block->escapeHtml(__('Sign Up for Newsletter')) ?></span></label>
                 </div>
                 <?php /* Extensions placeholder */ ?>
