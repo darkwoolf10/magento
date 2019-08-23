@@ -1,0 +1,50 @@
+<div class="ask-question-tab">
+    <h3><?= $block->escapeHtml(__('Ask Question')) ?></h3>
+    <form
+        action="<?= $block->escapeUrl($block->getUrl('ask_question/submit')) ?>"
+        method="POST"
+        id="ask-form"
+        onsubmit="return false;"
+        data-mage-init='{"askquestion":{}}'
+    >
+        <label for="name"><?= $block->escapeHtml(__('Your name')) ?></label>
+        <input type="text"
+               id="name"
+               name="name"
+               placeholder="<?= $block->escapeHtmlAttr(__('Enter your name')) ?>"
+               data-validate="{'required':true}"
+        />
+
+        <label for="email"><?= $block->escapeHtml(__('Your email')) ?></label>
+        <input type="email"
+               id="email"
+               name="email"
+               placeholder="<?= $block->escapeHtmlAttr(__('Enter your email')) ?>"
+               data-validate="{'required':true}"
+        />
+
+        <label for="phone"><?= $block->escapeHtml(__('Your phone')) ?></label>
+        <input type="tel"
+               id="phone"
+               class="mobileUKR"
+               name="phone"
+               placeholder="<?= $block->escapeHtmlAttr(__('+380...')) ?>"
+               data-validate="{'required':true, 'mobileUKR': true}"
+        />
+
+        <label for="question"><?= $block->escapeHtml(__('Your question')) ?></label>
+        <textarea id="question"
+                  name="question"
+                  placeholder="<?= $block->escapeHtmlAttr(__('Enter your question')) ?>"
+                  cols="30"
+                  rows="10"
+                  data-validate="{'required':true}"
+        ></textarea>
+
+        <div class="ask-question-btn">
+            <button type="submit">
+                <span><?= $block->escapeHtml(__('Send question')) ?></span>
+            </button>
+        </div>
+    </form>
+</div>
