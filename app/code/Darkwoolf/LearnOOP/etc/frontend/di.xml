@@ -1,18 +1,23 @@
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <type name="Darkwoolf\LearnOOP\Model\Parameters">
         <arguments>
             <argument name="stringParam" xsi:type="string">someStringValue</argument>
             <argument name="instanceParam" xsi:type="object">Darkwoolf\LearnOOP\Model\ConstantsMethods</argument>
             <argument name="boolParam" xsi:type="boolean">1</argument>
             <argument name="intParam" xsi:type="number">1</argument>
-            <argument name="constantParam" xsi:type="const">Darkwoolf\LearnOOP\Model\ConstantsMethods::REQUEST</argument>
+            <argument name="constantParam" xsi:type="const">
+                Darkwoolf\LearnOOP\Model\ConstantsMethods::REQUEST
+            </argument>
             <argument name="optionalParam" xsi:type="null"/>
             <argument name="arrayParam" xsi:type="array">
                 <item name="firstElem" xsi:type="const">Darkwoolf\LearnOOP\Model\ConstantsMethods::AUTH</item>
                 <item name="secondElem" xsi:type="null"/>
                 <item name="thirdElem" xsi:type="array">
                     <item name="scalarValue" xsi:type="string">ScalarValue</item>
-                    <item name="globalArgument " xsi:type="init_parameter">Darkwoolf\LearnOOP\Model\ConstantsMethods::NONE</item>
+                    <item name="globalArgument " xsi:type="init_parameter">
+                        Darkwoolf\LearnOOP\Model\ConstantsMethods::NONE
+                    </item>
                 </item>
             </argument>
         </arguments>

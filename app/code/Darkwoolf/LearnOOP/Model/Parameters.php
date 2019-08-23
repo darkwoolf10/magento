@@ -8,19 +8,26 @@ namespace Darkwoolf\LearnOOP\Model;
  */
 class Parameters
 {
-    public $stringParam;
+    /** @var string  */
+    protected $stringParam;
 
-    public $instanceParam;
+    /** @var object  */
+    protected $instanceParam;
 
-    public $boolParam;
+    /** @var bool  */
+    protected $boolParam;
 
-    public $intParam;
+    /** @var int  */
+    protected $intParam;
 
-    public $constantParam;
+    /** @var mixed */
+    protected $constantParam;
 
-    public $optionalParam;
+    /** @var mixed */
+    protected $optionalParam;
 
-    public $arrayParam;
+    /** @var array  */
+    protected $arrayParam;
 
     /**
      * Parameters constructor.

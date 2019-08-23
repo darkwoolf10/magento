@@ -3,6 +3,7 @@
 namespace Darkwoolf\LearnOOP\Model;
 
 use RecursiveIteratorIterator;
+use \Magento\Framework\Filesystem\DirectoryList;
 
 /**
  * Class FileList
@@ -11,25 +12,25 @@ use RecursiveIteratorIterator;
 class FileList
 {
     /**
-     * @var \Magento\Framework\Filesystem\DirectoryList
+     * @var DirectoryList
      */
-    protected $_dir;
+    protected $dir;
 
     /**
      * FileList constructor.
-     * @param \Magento\Framework\Filesystem\DirectoryList $dir
+     * @param DirectoryList $dir
      */
-    public function __construct(\Magento\Framework\Filesystem\DirectoryList $dir)
+    public function __construct(DirectoryList $dir)
     {
-        $this->_dir = $dir;
+        $this->dir = $dir;
     }
 
     /**
-     * @return \RecursiveIteratorIterator
+     * @return RecursiveIteratorIterator
      */
-    public function giveFileList(): RecursiveIteratorIterator
+    public function getFileList(): RecursiveIteratorIterator
     {
-        $myPath = $this->_dir->getRoot() . '/app/code/';
+        $myPath = $this->dir->getRoot() . '/app/code/';
 
         $iterator = new \RecursiveDirectoryIterator($myPath);
         $fileList = new \RecursiveIteratorIterator($iterator);

@@ -5,23 +5,24 @@ namespace Darkwoolf\LearnOOP\Block;
 use Darkwoolf\LearnOOP\Model\ConstantsMethods;
 use Darkwoolf\LearnOOP\Model\FileList;
 use Darkwoolf\LearnOOP\Model\Parameters;
+use \Magento\Framework\View\Element\Template\Context;
 
 class LessonOopBlock extends \Magento\Framework\View\Element\Template
 {
     /**
      * @var FileList
      */
-    public $fileListGet;
+    private $fileList;
 
     /**
      * @var ConstantsMethods
      */
-    public $constantsAndMethodsGet;
+    private $constantsAndMethods;
 
     /**
      * @var Parameters
      */
-    public $parametersGet;
+    private $parameters;
 
     /**
      * LessonOopBlock constructor.
@@ -31,41 +32,39 @@ class LessonOopBlock extends \Magento\Framework\View\Element\Template
      * @param Parameters $parameters
      */
     public function __construct(
-        \Magento\Framework\View\Element\Template\Context $context,
+        Context $context,
         ConstantsMethods $constantsAndMethods,
         FileList $fileList,
         Parameters $parameters
     ) {
         parent::__construct($context);
-        $this->fileListGet = $fileList;
-        $this->constantsAndMethodsGet = $constantsAndMethods;
-        $this->parametersGet = $parameters;
+        $this->fileList = $fileList;
+        $this->constantsAndMethods = $constantsAndMethods;
+        $this->parameters = $parameters;
     }
 
     /**
      * @return \RecursiveIteratorIterator
      */
-    public function giveFileList(): \RecursiveIteratorIterator
+    public function getFileList(): \RecursiveIteratorIterator
     {
-        return $this->fileListGet->giveFileList();
+        return $this->fileList->getFileList();
     }
 
     /**
      * @return array
-     * @throws \ReflectionException
      */
     public function getMethods(): array
     {
-        return $this->constantsAndMethodsGet->getMethods();
+        return $this->constantsAndMethods->getMethods();
     }
 
     /**
      * @return array
-     * @throws \ReflectionException
      */
     public function getConstants(): array
     {
-        return $this->constantsAndMethodsGet->getConstants();
+        return $this->constantsAndMethods->getConstants();
     }
 
     /**
@@ -73,6 +72,6 @@ class LessonOopBlock extends \Magento\Framework\View\Element\Template
      */
     public function getParameters(): array
     {
-        return $this->parametersGet->getParameters();
+        return $this->parameters->getParameters();
     }
 }

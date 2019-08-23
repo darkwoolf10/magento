@@ -1,7 +1,8 @@
+
 <div>
     <h2>File List:</h2>
     <?php
-        foreach ($block->giveFileList() as $filename) {
+        foreach ($block->getFileList() as $filename) {
             echo $filename . 'Date of creation/change:' . date('F d Y H:i:s.', filemtime($filename)) . '<br/>';
         }
     ?>
@@ -13,9 +14,9 @@
         }
     ?>
 
-    <h2>Methods:</h2>
+    <h2>Public methods:</h2>
     <?php
-        foreach ($block->getMethods() as $method) {
+        foreach ($block->getMethods(ReflectionMethod::IS_PUBLIC) as $method) {
             echo $method->name . '<br/>';
         }
     ?>
