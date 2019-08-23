@@ -29,7 +29,7 @@
         if (is_array($parametersValue)) {
             $parametersValue = $parametersValue['instance'] ?? 'array';
         }
-        echo $parametersName . ':' . $parametersValue . '<br/>';
+        echo '<span>' . $parametersName . ':' . $parametersValue . '</span><br/>';
         ?>
     <?php endforeach; ?>
 </div>
