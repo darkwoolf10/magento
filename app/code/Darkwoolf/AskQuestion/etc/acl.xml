@@ -5,7 +5,7 @@
             <resource id="Magento_Backend::admin">
                 <resource id="Magento_Backend::content">
                     <resource id="Magento_Backend::content_question" title="Questions Grid" translate="title" sortOrder="30">
-                        <resource id="Darkwoolf_AskQuestion::ask_question_grid" title="Ask Question Grid" translate="title" sortOrder="60" />
+                        <resource id="Darkwoolf_AskQuestion::askquestiongrid" title="Ask Question Grid" translate="title" sortOrder="60" />
                     </resource>
                 </resource>
             </resource>

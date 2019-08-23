@@ -14,7 +14,7 @@
              module="Darkwoolf_AskQuestion"
              sortOrder="60"
              parent="Darkwoolf_AskQuestion::content_question"
-             action="askquestion_grid/question/index"
+             action="askquestiongrid/question/index"
              resource="Darkwoolf_AskQuestion::ask_question_grid"/>
     </menu>
 </config>
