@@ -1,28 +1,31 @@
-
 <div>
     <h2>File List:</h2>
     <?php
-        foreach ($block->getFileList() as $filename) {
-            echo $filename . 'Date of creation/change:' . date('F d Y H:i:s.', filemtime($filename)) . '<br/>';
-        }
+    /**
+     * @var \Darkwoolf\LearnOOP\Block\LessonOopBlock $block
+     */
+    foreach ($block->getFileList() as $filename) {
+        echo $filename . 'Date of creation/change:' . date('F d Y H:i:s.', filemtime($filename)) . '<br/>';
+    }
     ?>
 
     <h2>Constants:</h2>
     <?php
-        foreach ($block->getConstants() as $constant) {
-            echo $constant . '<br/>';
-        }
+    foreach ($block->getConstants() as $constant) {
+        echo $constant . '<br/>';
+    }
     ?>
 
     <h2>Public methods:</h2>
     <?php
-        foreach ($block->getMethods(ReflectionMethod::IS_PUBLIC) as $method) {
-            echo $method->name . '<br/>';
-        }
+    foreach ($block->getMethods(ReflectionMethod::IS_PUBLIC) as $method) {
+        echo $method->name . '<br/>';
+    }
     ?>
 
     <h2>Parameters:</h2>
-    <?php foreach ($block->getParameters() as $parametersName => $parametersValue) :
+    <?php
+    foreach ($block->getParameters() as $parametersName => $parametersValue) :
         if (is_array($parametersValue)) {
             $parametersValue = $parametersValue['instance'] ?? 'array';
         }

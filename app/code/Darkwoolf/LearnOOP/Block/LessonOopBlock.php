@@ -52,9 +52,10 @@ class LessonOopBlock extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * @param int $IS_PUBLIC
      * @return array
      */
-    public function getMethods(): array
+    public function getMethods(int $IS_PUBLIC): array
     {
         return $this->constantsAndMethods->getMethods();
     }
