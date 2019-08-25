@@ -8,13 +8,13 @@
              sortOrder="30"
              parent="Magento_Backend::content"
              resource="Darkwoolf_EditProductPage::greetings"/>
-        <add id="Darkwoolf_AskQuestion::ask_question_grid"
+        <add id="Darkwoolf_AskQuestion::askquestion_grid"
              title="Ask Question Grid"
              translate="title"
              module="Darkwoolf_AskQuestion"
              sortOrder="60"
              parent="Darkwoolf_AskQuestion::content_question"
              action="askquestiongrid/question/index"
-             resource="Darkwoolf_AskQuestion::ask_question_grid"/>
+             resource="Darkwoolf_AskQuestion::askquestion_grid"/>
     </menu>
 </config>

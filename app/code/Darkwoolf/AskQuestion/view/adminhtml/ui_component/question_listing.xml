@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">question_listing.askquestion_listing_data_source</item>
+            <item name="provider" xsi:type="string">question_listing.question_listing_data_source</item>
         </item>
     </argument>
     <settings>
-        <spinner>askquestion_columns</spinner>
+        <spinner>question_columns</spinner>
         <deps>
-            <dep>askquestion_listing.askquestion_listing_data_source</dep>
+            <dep>question_listing.question_listing_data_source</dep>
         </deps>
     </settings>
-    <dataSource name="askquestion_listing_data_source" component="Magento_Ui/js/grid/provider">
+    <dataSource name="question_listing_data_source" component="Magento_Ui/js/grid/provider">
         <settings>
             <storageConfig>
                 <param name="indexField" xsi:type="string">question_id</param>
@@ -20,7 +19,7 @@
             <updateUrl path="mui/index/render"/>
         </settings>
         <aclResource>Magento_Backend::admin</aclResource>
-        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="askquestion_listing_data_source">
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="question_listing_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>question_id</primaryFieldName>
@@ -39,7 +38,7 @@
         <massaction name="listing_massaction">
             <action name="change_status">
                 <settings>
-                    <url path="askquestion_grid/question/massStatus"/>
+                    <url path="askquestiongrid/question/massStatus"/>
                     <type>status</type>
                     <label translate="true">Change status to Answered</label>
                 </settings>
@@ -47,7 +46,12 @@
         </massaction>
         <paging name="listing_paging"/>
     </listingToolbar>
-    <columns name="askquestion_columns">
+    <columns name="question_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>question_id</indexField>
+            </settings>
+        </selectionsColumn>
         <column name="question_id">
             <settings>
                 <filter>textRange</filter>

@@ -9,6 +9,8 @@ use Magento\Framework\App\ResponseInterface;
 use Magento\Ui\Component\MassAction\Filter;
 use Magento\Framework\Controller\ResultFactory;
 use Darkwoolf\AskQuestion\Model\ResourceModel\Question\Collection;
+use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\Exception\LocalizedException;
 
 /**
  * Class MassStatus
@@ -16,6 +18,11 @@ use Darkwoolf\AskQuestion\Model\ResourceModel\Question\Collection;
  */
 class MassStatus extends Action
 {
+    /** @var Filter  */
+    protected $filter;
+
+    /** @var CollectionFactory  */
+    protected $collectionFactory;
     /**
      * MassStatus constructor.
      * @param Context $context
@@ -27,13 +34,14 @@ class MassStatus extends Action
         Filter $filter,
         CollectionFactory $collectionFactory
     ) {
+        $this->filter = $filter;
+        $this->collectionFactory = $collectionFactory;
         parent::__construct($context);
     }
 
     /**
      * @param Collection $collection
-     * @return \Magento\Framework\Controller\ResultInterface
-     * @throws \Exception
+     * @return ResultInterface
      */
     protected function massAction(Collection $collection)
     {
@@ -55,19 +63,26 @@ class MassStatus extends Action
     }
 
     /**
-     * Execute action based on request and return result
-     *
-     * Note: Request will be added as operation argument in future
-     *
-     * @return \Magento\Framework\Controller\ResultInterface|ResponseInterface
-     * @throws \Magento\Framework\Exception\NotFoundException
+     * @return ResponseInterface|ResultInterface
+     * @throws LocalizedException
      */
     public function execute()
     {
-        /** @var \Magento\Framework\View\Result\Page $resultPage */
-        $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
-        $resultPage->getConfig()->getTitle()->prepend(__('Customers questions'));
+        $collection = $this->filter->getCollection($this->collectionFactory->create());
+        //mass action
+        foreach ($collection as $rate) {
+            $rate->setStatus('Answered');
+        }
 
-        return $resultPage;
+        $collection->save();
+
+        if (count($collection)) {
+            $this->messageManager->addSuccess(__('A total of %1 record(s) were updated.', count($collection)));
+        }
+
+        $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
+        $resultRedirect->setPath($this->getComponentRefererUrl());
+
+        return $resultRedirect;
     }
 }

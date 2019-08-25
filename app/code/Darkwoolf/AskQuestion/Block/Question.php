@@ -4,6 +4,10 @@ namespace Darkwoolf\AskQuestion\Block;
 
 use Darkwoolf\AskQuestion\Model\ResourceModel\Question\Collection;
 
+/**
+ * Class Question
+ * @package Darkwoolf\AskQuestion\Block
+ */
 class Question extends \Magento\Framework\View\Element\Template
 {
     /**

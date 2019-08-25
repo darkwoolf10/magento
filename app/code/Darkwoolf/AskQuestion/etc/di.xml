@@ -10,7 +10,7 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="askquestion_listing_data_source" xsi:type="string">Darkwoolf\AskQuestion\Model\ResourceModel\Question\Grid\CollectionVirtual</item>
+                <item name="question_listing_data_source" xsi:type="string">Darkwoolf\AskQuestion\Model\ResourceModel\Question\Grid\CollectionVirtual</item>
             </argument>
         </arguments>
     </type>
