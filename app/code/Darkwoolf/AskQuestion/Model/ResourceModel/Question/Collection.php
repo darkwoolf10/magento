@@ -2,48 +2,74 @@
 
 namespace Darkwoolf\AskQuestion\Model\ResourceModel\Question;
 
-class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
+use Magento\Framework\Data\Collection\EntityFactoryInterface;
+use Psr\Log\LoggerInterface;
+use Magento\Framework\Data\Collection\Db\FetchStrategyInterface;
+use Magento\Framework\Event\ManagerInterface;
+use Magento\Store\Model\StoreManagerInterface;
+use Magento\Framework\DB\Adapter\AdapterInterface;
+use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Darkwoolf\AskQuestion\Model\Question as ModelQuestion;
+use Darkwoolf\AskQuestion\Model\ResourceModel\Question as ResourceModelQuestion;
+use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
+
+/**
+ * Class Collection
+ * @package Darkwoolf\AskQuestion\Model\ResourceModel\Question
+ */
+class Collection extends AbstractCollection
 {
     /**
-     * @var \Magento\Store\Model\StoreManagerInterface
+     * @var StoreManagerInterface
      */
     private $storeManager;
 
+    /** @var string  */
+    protected $_eventPrefix = 'darkwoolf_ask_question_collection';
+
+    /** @var string  */
+    protected $_eventObject = 'askquestion_collection';
+
+    /** @var string  */
+    protected $_idFieldName = 'question_id';
+
     /**
      * Collection constructor.
-     * @param \Magento\Framework\Data\Collection\EntityFactoryInterface $entityFactory
-     * @param \Psr\Log\LoggerInterface $logger
-     * @param \Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy
-     * @param \Magento\Framework\Event\ManagerInterface $eventManager
-     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
-     * @param \Magento\Framework\DB\Adapter\AdapterInterface|null $connection
-     * @param \Magento\Framework\Model\ResourceModel\Db\AbstractDb|null $resource
+     * @param EntityFactoryInterface $entityFactory
+     * @param LoggerInterface $logger
+     * @param FetchStrategyInterface $fetchStrategy
+     * @param ManagerInterface $eventManager
+     * @param StoreManagerInterface $storeManager
+     * @param AdapterInterface|null $connection
+     * @param AbstractDb|null $resource
      */
     public function __construct(
-        \Magento\Framework\Data\Collection\EntityFactoryInterface $entityFactory,
-        \Psr\Log\LoggerInterface $logger,
-        \Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy,
-        \Magento\Framework\Event\ManagerInterface $eventManager,
-        \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Magento\Framework\DB\Adapter\AdapterInterface $connection = null,
-        \Magento\Framework\Model\ResourceModel\Db\AbstractDb $resource = null
+        EntityFactoryInterface $entityFactory,
+        LoggerInterface $logger,
+        FetchStrategyInterface $fetchStrategy,
+        ManagerInterface $eventManager,
+        StoreManagerInterface $storeManager,
+        AdapterInterface $connection = null,
+        AbstractDb $resource = null
     ) {
         parent::__construct($entityFactory, $logger, $fetchStrategy, $eventManager, $connection, $resource);
         $this->storeManager = $storeManager;
     }
 
+
     protected function _construct()
     {
         $this->_init(
-            \Darkwoolf\AskQuestion\Model\Question::class,
-            \Darkwoolf\AskQuestion\Model\ResourceModel\Question::class
+            ModelQuestion::class,
+            ResourceModelQuestion::class
         );
     }
 
     /**
      * @param int $storeId
      * @return Collection
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     * @throws NoSuchEntityException
      */
     public function addStoreFilter(int $storeId = 0): self
     {

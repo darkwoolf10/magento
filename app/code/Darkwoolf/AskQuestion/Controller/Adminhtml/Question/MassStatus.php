@@ -23,6 +23,7 @@ class MassStatus extends Action
 
     /** @var CollectionFactory  */
     protected $collectionFactory;
+
     /**
      * MassStatus constructor.
      * @param Context $context
@@ -40,36 +41,13 @@ class MassStatus extends Action
     }
 
     /**
-     * @param Collection $collection
-     * @return ResultInterface
-     */
-    protected function massAction(Collection $collection)
-    {
-        /** @var \Darkwoolf\AskQuestion\Model\Question $rate */
-        foreach ($collection as $rate) {
-            $rate->setStatus('Answered');
-        }
-
-        $collection->save();
-
-        if (count($collection)) {
-            $this->messageManager->addSuccess(__('A total of %1 record(s) were updated.', count($collection)));
-        }
-
-        $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
-        $resultRedirect->setPath($this->getComponentRefererUrl());
-
-        return $resultRedirect;
-    }
-
-    /**
      * @return ResponseInterface|ResultInterface
      * @throws LocalizedException
      */
     public function execute()
     {
         $collection = $this->filter->getCollection($this->collectionFactory->create());
-        //mass action
+
         foreach ($collection as $rate) {
             $rate->setStatus('Answered');
         }
@@ -81,7 +59,7 @@ class MassStatus extends Action
         }
 
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
-        $resultRedirect->setPath($this->getComponentRefererUrl());
+        $resultRedirect->setPath($this->_redirect->getRefererUrl());
 
         return $resultRedirect;
     }

@@ -44,6 +44,10 @@ class Question extends \Magento\Framework\Model\AbstractModel
      */
     private $storeManager;
 
+    /** @var string  */
+    protected $_eventPrefix = 'darkwoolf_ask_question';
+
+
     /**
      * @param \Magento\Framework\Model\Context $context
      * @param \Magento\Framework\Registry $registry

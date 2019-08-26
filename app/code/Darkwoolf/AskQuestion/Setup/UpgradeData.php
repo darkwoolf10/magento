@@ -6,24 +6,28 @@ use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\UpgradeDataInterface;
 use Magento\Store\Model\Store;
+use Darkwoolf\AskQuestion\Model\Question;
 
+/**
+ * Class UpgradeData
+ * @package Darkwoolf\AskQuestion\Setup
+ */
 class UpgradeData implements UpgradeDataInterface
 {
-    /**
-     * @var \Darkwoolf\AskQuestion\Model\QuestionFactory $questionFactory
-     */
+    /** @var QuestionFactory  */
     private $questionFactory;
 
+    /** @var Question  */
     private $questionModel;
 
     /**
      * UpgradeData constructor.
      * @param \Darkwoolf\AskQuestion\Model\QuestionFactory $questionFactory
-     * @param \Darkwoolf\AskQuestion\Model\Question $questionModel
+     * @param Question $questionModel
      */
     public function __construct(
         \Darkwoolf\AskQuestion\Model\QuestionFactory $questionFactory,
-        \Darkwoolf\AskQuestion\Model\Question $questionModel
+        Question $questionModel
     )
     {
         $this->questionFactory = $questionFactory;
@@ -31,11 +35,9 @@ class UpgradeData implements UpgradeDataInterface
     }
 
     /**
-     * Upgrades data for a module
-     *
      * @param ModuleDataSetupInterface $setup
      * @param ModuleContextInterface $context
-     * @return void
+     * @throws \Exception
      */
     public function upgrade(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
