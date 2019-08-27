@@ -15,6 +15,8 @@ class Collection
     /** @var StoreManagerInterface  */
     private $storeManager;
 
+    private $calledStoreFilter = false;
+
     /**
      * Collection constructor.
      * @param StoreManagerInterface $storeManager
@@ -35,9 +37,13 @@ class Collection
      */
     public function aroundLoad(QuestionCollection $subject, \Closure $proceed, $printQuery = false, $logQuery = false)
     {
-        $storeId = (int) $this->storeManager->getStore()->getStoreId();
-        $subject->addStoreFilter($storeId);
+        static $calledStoreFilter = false;
 
+        if (!$calledStoreFilter) {
+            $storeId = (int) $this->storeManager->getStore()->getStoreId();static $foo_called = false;
+            $subject->addStoreFilter($storeId);
+            $calledStoreFilter = true;
+        }
         $result = $proceed($printQuery, $logQuery);
 
         return $result;

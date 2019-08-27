@@ -31,6 +31,9 @@ class Collection extends AbstractCollection
     /** @var string  */
     protected $_eventObject = 'askquestion_collection';
 
+    /** @var LoggerInterface  */
+    protected $logger;
+
     /**
      * Collection constructor.
      * @param EntityFactoryInterface $entityFactory
@@ -52,6 +55,7 @@ class Collection extends AbstractCollection
     ) {
         parent::__construct($entityFactory, $logger, $fetchStrategy, $eventManager, $connection, $resource);
         $this->storeManager = $storeManager;
+        $this->logger = $logger;
     }
 
 
@@ -70,6 +74,7 @@ class Collection extends AbstractCollection
      */
     public function addStoreFilter(int $storeId = 0): self
     {
+        $this->logger->debug("TEST");
         if (!$storeId) {
             $storeId = (int) $this->storeManager->getStore()->getId();
         }

@@ -19,7 +19,7 @@ class UpgradeData implements UpgradeDataInterface
     /** @var Question  */
     private $questionModel;
 
-   /** @var  */
+    /** @var EavSetupFactory  */
     private $eavSetupFactory;
 
     /**
