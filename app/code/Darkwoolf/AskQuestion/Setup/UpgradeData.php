@@ -64,7 +64,7 @@ class UpgradeData implements UpgradeDataInterface
             }
         }
 
-        if (version_compare($context->getVersion(), '1.0.3', '<')) {
+        if (version_compare($context->getVersion(), '1.0.6', '<')) {
             /** @var EavSetup $eavSetup */
             $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
 

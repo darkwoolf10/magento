@@ -2,7 +2,7 @@
 
 namespace Darkwoolf\AskQuestion\Observer\Catalog\Block\Product;
 
-use \Magento\Framework\Event\ObserverInterface;
+use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Registry;
 
