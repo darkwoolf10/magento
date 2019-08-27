@@ -1,0 +1,15 @@
+<?php /** @var \Darkwoolf\AskQuestion\Block\Question $block */
+$questions = $block->getQuestions();
+?>
+<?php if ($questions->count()): ?>
+    <ul class="question-list">
+        <?php /** @var \Darkwoolf\AskQuestion\Model\Question $question */
+        foreach ($questions as $question):
+            ?>
+            <li class="question-item">
+                <?= __('Question from %2:  %1', $question->getQuestion(), $question->getName()) ?>
+                <span class="question-status"><?=__($question->getStatus()) ?></span>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>

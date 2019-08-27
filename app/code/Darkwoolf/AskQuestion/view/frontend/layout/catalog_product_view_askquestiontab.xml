@@ -10,6 +10,14 @@
                 <arguments>
                     <argument translate="true" name="title" xsi:type="string">Ask question</argument>
                 </arguments>
+                <block class="Darkwoolf\AskQuestion\Block\Question"
+                       name="askquestion.list"
+                       template="Darkwoolf_AskQuestion::product/view/ask_question_list.phtml"
+                >
+                    <arguments>
+                        <argument name="limit" xsi:type="number">10</argument>
+                    </arguments>
+                </block>
             </block>
         </referenceBlock>
     </body>
