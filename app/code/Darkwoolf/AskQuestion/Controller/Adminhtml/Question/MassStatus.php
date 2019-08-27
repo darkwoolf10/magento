@@ -48,14 +48,16 @@ class MassStatus extends Action
     {
         $collection = $this->filter->getCollection($this->collectionFactory->create());
 
-        foreach ($collection as $rate) {
-            $rate->setStatus('Answered');
-        }
+        if (count($collection) > 0) {
+            foreach ($collection as $rate) {
+                $rate->setStatus('Answered');
+            }
 
-        $collection->save();
+            $collection->save();
 
-        if (count($collection)) {
             $this->messageManager->addSuccess(__('A total of %1 record(s) were updated.', count($collection)));
+        } else {
+            $this->messageManager->addError(__('You have not selected more than one record'));
         }
 
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
