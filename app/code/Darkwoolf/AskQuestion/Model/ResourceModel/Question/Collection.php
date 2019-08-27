@@ -12,12 +12,13 @@ use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Darkwoolf\AskQuestion\Model\Question as ModelQuestion;
 use Darkwoolf\AskQuestion\Model\ResourceModel\Question as ResourceModelQuestion;
+use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
 /**
  * Class Collection
  * @package Darkwoolf\AskQuestion\Model\ResourceModel\Question
  */
-class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
+class Collection extends AbstractCollection
 {
     /**
      * @var StoreManagerInterface
