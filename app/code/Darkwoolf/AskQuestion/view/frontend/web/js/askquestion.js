@@ -29,7 +29,6 @@ define([
             if (!this.validateForm() || this.isFlood()) {
                 return;
             }
-            console.log('sdafadsf');
 
             this.ajaxSubmit();
         },
