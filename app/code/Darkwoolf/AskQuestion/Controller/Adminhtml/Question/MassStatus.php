@@ -46,9 +46,11 @@ class MassStatus extends Action
      */
     public function execute()
     {
-        $collection = $this->filter->getCollection($this->collectionFactory->create());
+        /** @var Collection $collection */
+        $collection = $this->filter->getCollection($this->collectionFactory->create())->load();
 
         if (count($collection) > 0) {
+            /** @var \Darkwoolf\AskQuestion\Model\Question $rate */
             foreach ($collection as $rate) {
                 $rate->setStatus('Answered');
             }
