@@ -36,7 +36,8 @@ class Collection
     public function aroundLoad(QuestionCollection $subject, \Closure $proceed, $printQuery = false, $logQuery = false)
     {
         $storeId = (int) $this->storeManager->getStore()->getStoreId();
-        $subject->addFieldToFilter('store_id', $storeId);
+        $subject->addStoreFilter($storeId);
+
         $result = $proceed($printQuery, $logQuery);
 
         return $result;
