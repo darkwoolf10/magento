@@ -4,8 +4,9 @@ namespace Darkwoolf\AskQuestion\Setup;
 
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
+use Magento\Framework\Setup\InstallDataInterface;
 
-class InstallData implements \Magento\Framework\Setup\InstallDataInterface
+class InstallData implements InstallDataInterface
 {
     /**
      * @param ModuleDataSetupInterface $setup

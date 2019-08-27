@@ -5,6 +5,10 @@ namespace Darkwoolf\AskQuestion\Model\Config\Source;
 use Magento\Framework\Data\OptionSourceInterface;
 use Darkwoolf\AskQuestion\Model\Question;
 
+/**
+ * Class Status
+ * @package Darkwoolf\AskQuestion\Model\Config\Source
+ */
 class Status implements OptionSourceInterface
 {
     /**
@@ -12,7 +16,7 @@ class Status implements OptionSourceInterface
      *
      * @return array
      */
-    public function toOptionArray()
+    public function toOptionArray(): array
     {
         return [
             [

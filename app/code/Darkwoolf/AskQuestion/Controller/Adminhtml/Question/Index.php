@@ -2,21 +2,24 @@
 
 namespace Darkwoolf\AskQuestion\Controller\Adminhtml\Question;
 
-use \Magento\Framework\View\Result\Page;
+use Magento\Framework\View\Result\Page;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\ResultInterface;
+use Magento\Backend\App\Action;
 
 /**
  * Class Index
  * @package Darkwoolf\AskQuestion\Controller\Adminhtml\Question
  */
-class Index extends \Magento\Backend\App\Action
+class Index extends Action
 {
     /**
-     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
+     * @return ResponseInterface|ResultInterface|Page
      */
     public function execute()
     {
-        /** @var \Magento\Framework\View\Result\Page $resultPage */
+        /** @var Page $resultPage */
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
         $resultPage->getConfig()->getTitle()->prepend(__('Customers questions'));
 

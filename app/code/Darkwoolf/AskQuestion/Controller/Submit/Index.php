@@ -1,37 +1,45 @@
 <?php
 
-
 namespace Darkwoolf\AskQuestion\Controller\Submit;
 
 use Darkwoolf\AskQuestion\Model\Question;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\App\Action\Action;
+use Magento\Framework\Data\Form\FormKey\Validator;
+use Darkwoolf\AskQuestion\Model\QuestionFactory;
+use Magento\Framework\App\Action\Context;
+use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\Controller\Result\Json;
+use Magento\Framework\App\ResponseInterface;
 
-class Index extends \Magento\Framework\App\Action\Action
+/**
+ * Class Index
+ * @package Darkwoolf\AskQuestion\Controller\Submit
+ */
+class Index extends Action
 {
-
-
     /**
-     * @var \Magento\Framework\Data\Form\FormKey\Validator
+     * @var Validator
      */
     private $formKeyValidator;
 
     /**
-     * @var \Darkwoolf\AskQuestion\Model\QuestionFactory
+     * @var QuestionFactory
      */
     private $questionFactory;
 
     /**
      * Index constructor.
-     * @param \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator
-     * @param \Darkwoolf\AskQuestion\Model\QuestionFactory $questionFactory
-     * @param \Magento\Framework\App\Action\Context $context
+     * @param Validator $formKeyValidator
+     * @param QuestionFactory $questionFactory
+     * @param Context $context
      */
     public function __construct(
-        \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator,
-        \Darkwoolf\AskQuestion\Model\QuestionFactory $questionFactory,
-        \Magento\Framework\App\Action\Context $context
+        Validator $formKeyValidator,
+        QuestionFactory $questionFactory,
+        Context $context
     ) {
         parent::__construct($context);
         $this->formKeyValidator = $formKeyValidator;
@@ -39,13 +47,13 @@ class Index extends \Magento\Framework\App\Action\Action
     }
 
     /**
-     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Json|\Magento\Framework\Controller\ResultInterface
-     * @throws \Exception
+     * @return ResponseInterface|Json|ResultInterface
      */
     public function execute()
     {
         /** @var Http $request */
         $request = $this->getRequest();
+
         /** @var $question */
         $question = $this->questionFactory->create();
 
@@ -71,7 +79,7 @@ class Index extends \Magento\Framework\App\Action\Action
         }
 
         /**
-         * @var \Magento\Framework\Controller\Result\Json $controllerResult
+         * @var Json $controllerResult
          */
         $controllerResult = $this->resultFactory->create(ResultFactory::TYPE_JSON);
 

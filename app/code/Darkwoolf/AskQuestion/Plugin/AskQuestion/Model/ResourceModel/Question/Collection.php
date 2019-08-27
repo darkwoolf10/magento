@@ -1,6 +1,6 @@
 <?php
 
-namespace Darkwoolf\AskQuestion\Plugin\AskQuestion\Model\ResourceModel\AskQuestion;
+namespace Darkwoolf\AskQuestion\Plugin\AskQuestion\Model\ResourceModel\Question;
 
 use Darkwoolf\AskQuestion\Model\ResourceModel\Question\Collection as QuestionCollection;
 use Magento\Store\Model\StoreManagerInterface;
@@ -8,7 +8,7 @@ use Magento\Framework\Exception\NoSuchEntityException;
 
 /**
  * Class Collection
- * @package Darkwoolf\AskQuestion\Plugin\AskQuestion\Model\ResourceModel\AskQuestion
+ * @package Darkwoolf\AskQuestion\Plugin\AskQuestion\Model\ResourceModel\Question
  */
 class Collection
 {

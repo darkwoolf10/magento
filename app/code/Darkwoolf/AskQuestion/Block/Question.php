@@ -3,21 +3,26 @@
 namespace Darkwoolf\AskQuestion\Block;
 
 use Darkwoolf\AskQuestion\Model\ResourceModel\Question\Collection;
+use Darkwoolf\AskQuestion\Model\ResourceModel\Question\CollectionFactory;
+use Magento\Framework\View\Element\Template;
+use Magento\Framework\View\Element\Template\Context;
+use Magento\Framework\Exception\NoSuchEntityException;
 
 /**
  * Class Question
  * @package Darkwoolf\AskQuestion\Block
  */
-class Question extends \Magento\Framework\View\Element\Template
+class Question extends Template
 {
     /**
-     * @var \Darkwoolf\AskQuestion\Model\ResourceModel\Question\CollectionFactory
+     * @var CollectionFactory
      */
     private $collectionFactory;
+
     /**
      * Requests constructor.
-     * @param \Darkwoolf\AskQuestion\Model\ResourceModel\Question\CollectionFactory $collectionFactory
-     * @param \Magento\Framework\View\Element\Template\Context $context
+     * @param CollectionFactory $collectionFactory
+     * @param Context $context
      * @param array $data
      */
     public function __construct(
@@ -31,7 +36,7 @@ class Question extends \Magento\Framework\View\Element\Template
 
     /**
      * @return Collection
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     * @throws NoSuchEntityException
      */
     public function getQuestions(): Collection
     {
