@@ -10,10 +10,19 @@ use Magento\Ui\Component\Form\Element\Select;
 use Magento\Ui\Component\Form\Element\Textarea;
 use Magento\Ui\Component\Form\Element\DataType\Text;
 
+/**
+ * Class NewField
+ * @package Darkwoolf\EditProductPage\Ui\DataProvider\Product\Form\Modifier
+ */
 class NewField extends AbstractModifier
 {
+    /** @var LocatorInterface  */
     private $locator;
 
+    /**
+     * NewField constructor.
+     * @param LocatorInterface $locator
+     */
     public function __construct(LocatorInterface $locator) {
         $this->locator = $locator;
     }
@@ -21,7 +30,6 @@ class NewField extends AbstractModifier
     /**
      * @param array $data
      * @return array
-     * @since 100.1.0
      */
     public function modifyData(array $data): array
     {
@@ -31,7 +39,6 @@ class NewField extends AbstractModifier
     /**
      * @param array $meta
      * @return array
-     * @since 100.1.0
      */
     public function modifyMeta(array $meta)
     {
